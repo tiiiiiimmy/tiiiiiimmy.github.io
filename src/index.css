@@ -1,0 +1,12 @@
+/* Basic CSS Reset and body styling */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Anek Gujarati', 'Bruno Ace SC', Arial, sans-serif;
+  background: #fff;
+  color: #333;
+}
+* {
+  box-sizing: border-box;
+} 
