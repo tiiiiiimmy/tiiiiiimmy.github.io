@@ -1,0 +1,578 @@
+// Variables
+$primary-black: #000000;
+$primary-gray: #666666;
+$secondary-gray: #575757;
+$text-dark: #272727;
+$text-gray: #333333;
+$text-light: rgba(0, 0, 0, 0.6);
+$accent-green: #c8ff32;
+$education-green: #79a402;
+$placeholder-gray: #c4c4c4;
+$white: #ffffff;
+
+// Font families
+$font-bruno: "Bruno Ace SC", sans-serif;
+$font-anek: "Anek Gujarati", sans-serif;
+$font-inter: "Inter", sans-serif;
+
+// Mixins
+@mixin gradient-text {
+  background: linear-gradient(90deg, $primary-black 0%, $primary-gray 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// Main container
+.app {
+  background: $white;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+// Background SVG element
+.background-svg {
+  position: absolute;
+  top: -100rem;
+  
+  z-index: 0;
+  pointer-events: none;
+
+  svg {
+    position: absolute;
+    z-index: -1;
+  }
+}
+
+// Main content wrapper
+.main-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 72px 90px;
+}
+
+// Top section with large titles
+.hero-section {
+  margin-top: 604px;
+  max-width: 1216px;
+
+  .hero-wrapper {
+    max-width: 1069px;
+  }
+
+  .main-title {
+    font-family: $font-bruno;
+    font-weight: 400;
+    font-size: 128px;
+    line-height: 1.187;
+    letter-spacing: -0.06em;
+    text-transform: uppercase;
+    text-align: center;
+    @include gradient-text;
+    margin-bottom: 0;
+  }
+
+  .portfolio-title {
+    font-family: $font-bruno;
+    font-weight: 400;
+    font-size: 96px;
+    line-height: 1.187;
+    letter-spacing: -0.06em;
+    text-transform: uppercase;
+    text-align: left;
+    color: $secondary-gray;
+    margin-bottom: 24px;
+  }
+
+  .subtitle {
+    font-family: $font-anek;
+    font-weight: 300;
+    font-size: 28px;
+    color: $text-light;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+}
+
+// Decorative elements
+.decorative-elements {
+  .vertical-line {
+    position: absolute;
+    left: 96px;
+    top: 120px;
+    width: 1px;
+    height: 519px;
+    background: $text-gray;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: -2px;
+      top: -3px;
+      width: 7px;
+      height: 23px;
+      background: $text-gray;
+    }
+  }
+
+  .horizontal-line {
+    position: absolute;
+    right: 90px;
+    top: 959px;
+    width: 638px;
+    height: 7px;
+    background: transparent;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 4px;
+      width: 638px;
+      height: 1px;
+      background: $text-gray;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 23px;
+      height: 7px;
+      background: $text-gray;
+    }
+  }
+}
+
+// Introduction section
+.introduction-section {
+  
+  gap: 10px;
+  padding: 10px;
+  margin-top: 566px;
+  margin-left: 1px;
+
+  .intro-text {
+    font-family: $font-anek;
+    font-weight: 500;
+    font-size: 64px;
+    color: $text-dark;
+    line-height: 1.3125;
+    text-align: left;
+  }
+}
+
+// Social links
+.social-section {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  margin-top: 12px;
+  margin-left: 11px;
+
+  .social-link {
+    font-family: $font-anek;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 1.875;
+    color: $text-dark;
+    text-decoration: none;
+    padding: 2px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: inline-block;
+    width: auto;
+
+    &:hover {
+      background-color: $accent-green;
+      color: $primary-black;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// Skills and Education Combined Section
+.skills-education-section {
+  display: flex;
+  gap: 243px;
+  margin-top: 211px;
+  margin-left: 11px;
+  align-items: flex-start;
+
+  // Skills subsection
+  .skills-container {
+    display: flex;
+    gap: 144px;
+
+    .skill-category {
+      .skill-title {
+        font-family: $font-anek;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 1.11;
+        color: $education-green;
+        margin-bottom: 16px;
+      }
+
+      .skill-list {
+        font-family: $font-inter;
+        font-weight: 600;
+        font-size: 32px;
+        line-height: 1.11;
+        color: $text-gray;
+      }
+    }
+  }
+
+  // Education subsection
+  .education-container {
+    width: 798px;
+    height: 251px;
+
+    .education-title {
+      font-family: $font-anek;
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 1.11;
+      color: $education-green;
+      margin: 0 0 61px 0;
+    }
+
+    .education-list {
+      @include flex-column;
+      gap: 61px;
+      width: 100%;
+    }
+
+    .education-item {
+      @include flex-column;
+      width: 601px;
+
+      &.master {
+        // Specific styles for master's degree if needed
+      }
+
+      &.bachelor {
+        // Specific styles for bachelor's degree if needed
+      }
+
+      .degree-title {
+        font-family: $font-anek;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 1.52;
+        color: $text-gray;
+        margin: 0;
+        width: 100%;
+      }
+
+      .university-name {
+        font-family: $font-inter;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 1.21;
+        letter-spacing: 0.005em;
+        text-transform: uppercase;
+        color: $text-gray;
+        margin: 0;
+        width: 100%;
+      }
+    }
+  }
+}
+
+// Projects section
+.projects-section {
+  margin-top: 300px;
+
+  .projects-title {
+    font-family: $font-anek;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.11;
+    color: $text-gray;
+    margin-bottom: 51px;
+    margin-left: 15px;
+    width: 207px;
+    height: 44px;
+  }
+
+  .projects-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 101px;
+    margin-left: 11px;
+    width: 1717px;
+  }
+
+  .project-card {
+    @include flex-column;
+    gap: 17px;
+    max-width: 808px;
+    width: 808px;
+
+    .project-image {
+      width: 100%;
+      height: 534px;
+      border-radius: 8px;
+      background: $placeholder-gray;
+
+      &.project-1 {
+        background-image: url("/images/project1.png");
+        background-size: cover;
+        background-position: center;
+      }
+      &.project-2 {
+        background-image: url("/images/project2.jpg");
+        background-size: cover;
+        background-position: center;
+      }
+      &:hover {
+        transform: scale(1.005);
+        transition: transform 0.5s ease;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    .project-content {
+      @include flex-column;
+      gap: 7px;
+      align-self: stretch;
+
+      .project-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 465px;
+        align-self: stretch;
+
+        .project-title {
+          font-family: $font-inter;
+          font-weight: 800;
+          font-size: 36px;
+          line-height: 1.21;
+          color: $text-gray;
+          margin: 0;
+          flex-shrink: 0;
+        }
+
+        .project-date {
+          font-family: $font-inter;
+          font-weight: 600;
+          font-size: 32px;
+          line-height: 1.21;
+          color: #2b2b2b;
+          text-align: right;
+          margin: 0;
+          flex-shrink: 0;
+        }
+      }
+
+      .project-description {
+        margin: 0;
+        font-family: $font-anek;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 1.52;
+        color: $text-gray;
+        align-self: stretch;
+      }
+    }
+  }
+}
+
+// Bottom slogan section
+.bottom-slogan-section {
+  text-align: center;
+  margin-top: 580px;
+  margin-left: 398px;
+
+  .bottom-slogan {
+    font-family: $font-bruno;
+    font-size: 48px;
+    line-height: 1.187;
+    @include gradient-text;
+    text-transform: uppercase;
+    margin: 0;
+    width: 764px;
+    height: 114px;
+  }
+}
+
+// Responsive design
+@media (max-width: 1200px) {
+  .main-content {
+    padding: 50px 50px;
+  }
+
+  .hero-section {
+    .main-title {
+      font-size: 96px;
+    }
+
+    .portfolio-title {
+      font-size: 72px;
+    }
+  }
+
+  .skills-education-section {
+    gap: 120px;
+
+    .skills-container {
+      gap: 80px;
+    }
+
+    .education-container {
+      width: auto;
+      max-width: 600px;
+
+      .education-item {
+        width: 100%;
+      }
+    }
+  }
+
+  .projects-section {
+    .projects-grid {
+      width: auto;
+      gap: 60px;
+    }
+
+    .project-card {
+      width: 100%;
+      max-width: 600px;
+    }
+  }
+
+  .bottom-slogan-section {
+    margin-left: 100px;
+
+    .bottom-slogan {
+      width: auto;
+      max-width: 600px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 30px 30px;
+  }
+
+  .hero-section {
+    margin-top: 300px;
+
+    .main-title {
+      font-size: 64px;
+    }
+
+    .portfolio-title {
+      font-size: 48px;
+    }
+
+    .subtitle {
+      font-size: 24px;
+    }
+  }
+
+  .introduction-section {
+    margin-top: 200px;
+
+    .intro-text {
+      font-size: 48px;
+    }
+  }
+
+  .skills-education-section {
+    flex-direction: column;
+    gap: 60px;
+
+    .skills-container {
+      flex-direction: column;
+      gap: 40px;
+
+      .skill-category {
+        .skill-title {
+          font-size: 32px;
+        }
+
+        .skill-list {
+          font-size: 24px;
+        }
+      }
+    }
+
+    .education-container {
+      width: auto;
+      height: auto;
+
+      .education-list {
+        gap: 40px;
+      }
+
+      .education-item {
+        width: 100%;
+
+        .degree-title {
+          font-size: 28px;
+        }
+
+        .university-name {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+  .projects-section {
+    .projects-grid {
+      flex-direction: column;
+      width: auto;
+      gap: 50px;
+    }
+
+    .project-card {
+      width: 100%;
+      max-width: 100%;
+
+      .project-content {
+        .project-header {
+          gap: 20px;
+
+          .project-title {
+            font-size: 28px;
+          }
+
+          .project-date {
+            font-size: 24px;
+          }
+        }
+      }
+    }
+  }
+
+  .bottom-slogan-section {
+    margin-left: 0;
+
+    .bottom-slogan {
+      font-size: 32px;
+      width: auto;
+    }
+  }
+}
