@@ -188,6 +188,31 @@ function App() {
               </div>
             </div>
 
+            <div className="project-card">
+            <div className="project-image project-3" />
+              <div className="project-content">
+                <div className="project-header">
+                  <h3 className="project-title">Speed Read</h3>
+                  <span className="project-date">November 2024</span>
+                </div>
+                <p className="project-description">
+                An AI-assisted fast reading plugin.
+                </p>
+              </div>
+            </div>
+            <div className="project-card">
+            <div className="project-image project-4" />
+              <div className="project-content">
+                <div className="project-header">
+                  <h3 className="project-title">MemoraLink</h3>
+                  <span className="project-date">August 2024</span>
+                </div>
+                <p className="project-description">
+                A library of precious memories of Earth for humans escaping from it
+                </p>
+              </div>
+            </div>
+
            
            
           </div>
