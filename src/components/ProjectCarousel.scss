@@ -1,0 +1,433 @@
+// ── Variables (mirror App.scss) ──────────────────────────────────────────────
+$green:      #c8ff32;
+$black:      #000000;
+$white:      #ffffff;
+$gray:       #333333;
+$gray-mid:   #555555;
+$placeholder: #c4c4c4;
+
+$font-bruno: 'Bruno Ace SC', sans-serif;
+$font-anek:  'Anek Gujarati', sans-serif;
+$font-inter: 'Inter', sans-serif;
+
+// ── Slide-in animations ───────────────────────────────────────────────────────
+@keyframes slideFromBottom {
+  from { opacity: 0; transform: translateY(56px) scale(0.985); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+@keyframes slideFromTop {
+  from { opacity: 0; transform: translateY(-56px) scale(0.985); }
+  to   { opacity: 1; transform: translateY(0)     scale(1); }
+}
+
+// Content stagger inside the slide
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+// ── Root ─────────────────────────────────────────────────────────────────────
+.project-carousel {
+  display: flex;
+  height: 700px;
+  margin-top: 120px;
+  position: relative;
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// LEFT — Main display
+// ═══════════════════════════════════════════════════════════════════════════════
+.carousel-display {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+
+  // Slide-in trigger (key-based remount)
+  &.dir-down { animation: slideFromBottom 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
+  &.dir-up   { animation: slideFromTop   0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+  // Background image
+  .carousel-image {
+    position: absolute;
+    inset: 0;
+    background-color: $placeholder;
+    background-size: cover;
+    background-position: center;
+  }
+
+  // Gradient overlay — darker at bottom for text legibility
+  .carousel-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      165deg,
+      rgba(0, 0, 0, 0.08) 0%,
+      rgba(0, 0, 0, 0.45) 45%,
+      rgba(0, 0, 0, 0.82) 100%
+    );
+  }
+
+  // ── Content (bottom-left) ──
+  .carousel-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 52px 56px;
+
+    .project-number {
+      display: block;
+      font-family: $font-bruno;
+      font-size: 80px;
+      line-height: 1;
+      color: $green;
+      opacity: 0.22;
+      letter-spacing: -0.05em;
+      margin-bottom: 2px;
+      user-select: none;
+      animation: fadeUp 0.6s 0.05s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .project-title {
+      font-family: $font-anek;
+      font-weight: 700;
+      font-size: 60px;
+      line-height: 1.08;
+      color: $white;
+      margin: 0 0 16px;
+      letter-spacing: -0.03em;
+      animation: fadeUp 0.6s 0.12s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .project-desc {
+      font-family: $font-inter;
+      font-size: 18px;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.7);
+      margin: 0 0 32px;
+      max-width: 560px;
+      animation: fadeUp 0.6s 0.19s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: $font-inter;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: $black;
+      background: $green;
+      padding: 13px 28px;
+      border-radius: 4px;
+      transition: background 0.2s ease, gap 0.25s ease;
+      animation: fadeUp 0.6s 0.25s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+      .link-arrow {
+        display: inline-block;
+        transition: transform 0.25s ease;
+      }
+
+      &:hover {
+        background: $white;
+        gap: 16px;
+        .link-arrow { transform: translateX(3px); }
+      }
+    }
+  }
+
+  // ── Date badge (top-right) ──
+  .carousel-date {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    font-family: $font-inter;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 6px 14px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    animation: fadeUp 0.5s 0.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  // ── Mobile dots (hidden on desktop) ──
+  .mobile-dots {
+    display: none;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    gap: 8px;
+
+    .mobile-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.35);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.3s, transform 0.3s;
+
+      &.active {
+        background: $green;
+        transform: scale(1.3);
+      }
+    }
+  }
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// RIGHT — Navigation
+// ═══════════════════════════════════════════════════════════════════════════════
+.carousel-nav {
+  width: 300px;
+  flex-shrink: 0;
+  padding-left: 52px;
+  display: flex;
+  flex-direction: column;
+
+  .nav-heading {
+    font-family: $font-anek;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.11;
+    color: $gray;
+    margin: 0 0 44px;
+  }
+
+  // ── Timeline wrapper ──
+  .nav-timeline {
+    flex: 1;
+    min-height: 0;
+    position: relative;
+    display: flex;
+    gap: 24px;
+  }
+
+  // Vertical track line
+  .track-line {
+    width: 2px;
+    flex-shrink: 0;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    position: relative;
+    // nudge top/bottom to align with first/last dot centers
+    margin-top: 7px;
+    margin-bottom: 7px;
+
+    .track-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: $green;
+      border-radius: 2px;
+      min-height: 0;
+      transition: height 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  }
+
+  // Items column
+  .nav-items {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  // Individual nav item
+  .nav-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-align: left;
+    transition: transform 0.25s ease;
+
+    // Dot — positioned to overlap the track line
+    // track-line center: left edge of nav-items minus gap(24px) minus half-track(1px) = -25px from nav-items edge
+    // dot is 12px wide; left = -25 - 6 = -31px; right edge at -31+12=-19; center at -25. ✓
+    &::before {
+      content: '';
+      position: absolute;
+      left: -31px;
+      top: 7px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.12);
+      border: 2px solid rgba(0, 0, 0, 0.1);
+      transition:
+        width  0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        left   0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        top    0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        background 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+    }
+
+    .nav-num {
+      font-family: $font-bruno;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: rgba(0, 0, 0, 0.25);
+      transition: color 0.3s;
+    }
+
+    .nav-name {
+      font-family: $font-anek;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 1.2;
+      color: rgba(0, 0, 0, 0.28);
+      transition: color 0.3s, font-size 0.3s;
+    }
+
+    .nav-date {
+      font-family: $font-inter;
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.22);
+      transition: color 0.3s;
+    }
+
+    // Passed (before current)
+    &.passed {
+      &::before {
+        background: $green;
+        border-color: $green;
+      }
+      .nav-num  { color: rgba(0, 0, 0, 0.45); }
+      .nav-name { color: rgba(0, 0, 0, 0.45); }
+      .nav-date { color: rgba(0, 0, 0, 0.35); }
+    }
+
+    // Active (current)
+    &.active {
+      &::before {
+        // 16px dot, keep same center: left = -25 - 8 = -33
+        width: 16px;
+        height: 16px;
+        left: -33px;
+        top: 5px;
+        background: $green;
+        border-color: $green;
+        box-shadow: 0 0 0 5px rgba(200, 255, 50, 0.22);
+      }
+      .nav-num  { color: $black; }
+      .nav-name { color: $black; font-size: 22px; }
+      .nav-date { color: $gray-mid; }
+    }
+
+    // Hover (non-active)
+    &:not(.active):hover {
+      transform: translateX(5px);
+      .nav-name { color: rgba(0, 0, 0, 0.65); }
+    }
+  }
+
+  // ── Prev / Next arrow buttons ──
+  .nav-arrows {
+    display: flex;
+    gap: 10px;
+    margin-top: 32px;
+
+    .arrow-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(0, 0, 0, 0.18);
+      background: none;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $gray;
+      transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+
+      &:hover:not(:disabled) {
+        background: $green;
+        border-color: $green;
+        color: $black;
+        transform: scale(1.08);
+      }
+
+      &:disabled {
+        opacity: 0.2;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Responsive
+// ═══════════════════════════════════════════════════════════════════════════════
+@media (max-width: 1100px) {
+  .project-carousel {
+    height: 600px;
+  }
+
+  .carousel-nav {
+    width: 240px;
+    padding-left: 36px;
+
+    .nav-heading { font-size: 32px; }
+
+    .nav-item {
+      .nav-name { font-size: 16px; }
+      &.active .nav-name { font-size: 19px; }
+    }
+  }
+
+  .carousel-content {
+    .project-title { font-size: 48px !important; }
+    .project-number { font-size: 64px !important; }
+  }
+}
+
+@media (max-width: 768px) {
+  .project-carousel {
+    height: 520px;
+    flex-direction: column;
+    margin-top: 60px;
+  }
+
+  .carousel-display {
+    flex: 1;
+
+    .carousel-content {
+      padding: 32px 28px;
+
+      .project-number { font-size: 48px !important; }
+      .project-title  { font-size: 36px !important; }
+      .project-desc   { font-size: 15px !important; }
+    }
+
+    .mobile-dots { display: flex; }
+  }
+
+  .carousel-nav {
+    display: none; // hidden on mobile, use dots instead
+  }
+}

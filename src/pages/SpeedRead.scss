@@ -193,8 +193,8 @@ $font-inter: "Inter", sans-serif;
 
   // Project Background Section
   .project-background {
-    @include section-spacing;
     max-width: 1400px;
+    @include section-spacing;
 
     .background-grid {
       display: grid;
