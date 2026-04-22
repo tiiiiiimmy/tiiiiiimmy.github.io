@@ -159,13 +159,18 @@ $font-inter: "Inter", sans-serif;
   }
 }
 
-// Introduction section
-.introduction-section {
-  
-  gap: 10px;
-  padding: 10px;
+// Profile section
+.profile-section {
+  display: flex;
+  gap: 88px;
   margin-top: 566px;
   margin-left: 1px;
+  align-items: flex-start;
+
+  .profile-intro {
+    width: min(100%, 540px);
+    flex-shrink: 0;
+  }
 
   .intro-text {
     font-family: $font-anek;
@@ -175,39 +180,79 @@ $font-inter: "Inter", sans-serif;
     line-height: 1.3125;
     text-align: left;
   }
-}
 
-// Social links
-.social-section {
-  display: flex;
-  gap: 18px;
-  align-items: center;
-  margin-top: 12px;
-  margin-left: 11px;
+  .social-section {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 12px;
+    margin-left: 11px;
 
-  .social-link {
-    font-family: $font-anek;
-    font-weight: 300;
-    font-size: 24px;
-    line-height: 1.875;
-    color: $text-dark;
-    text-decoration: none;
-    padding: 2px 12px;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    display: inline-block;
-    width: auto;
+    .social-link {
+      font-family: $font-anek;
+      font-weight: 300;
+      font-size: 24px;
+      line-height: 1.875;
+      color: $text-dark;
+      text-decoration: none;
+      padding: 2px 12px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      display: inline-block;
+      width: auto;
 
-    &:hover {
-      background-color: $accent-green;
-      color: $primary-black;
-      transform: translateY(-2px);
+      &:hover {
+        background-color: $accent-green;
+        color: $primary-black;
+        transform: translateY(-2px);
+      }
     }
+  }
+
+  .profile-skills {
+    flex: 1;
+    min-width: 0;
+    padding: 8px 0 0;
+  }
+
+  .profile-skills-title {
+    font-family: $font-anek;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.11;
+    color: $education-green;
+    margin: 0 0 22px;
+  }
+
+  .profile-skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    max-width: 920px;
+  }
+
+  .profile-skill-item {
+    margin: 0;
+    font-family: $font-inter;
+    font-size: 20px;
+    line-height: 1.6;
+    color: $text-gray;
+  }
+
+  .profile-skill-label {
+    font-weight: 700;
+    color: $text-dark;
+  }
+
+  .profile-skill-content {
+    font-weight: 500;
+    color: rgba(39, 39, 39, 0.82);
   }
 }
 
-// Skills and Education Combined Section
+// Legacy skills / education block
 .skills-education-section {
   display: flex;
   gap: 243px;
@@ -215,7 +260,6 @@ $font-inter: "Inter", sans-serif;
   margin-left: 11px;
   align-items: flex-start;
 
-  // Skills subsection
   .skills-container {
     display: flex;
     gap: 144px;
@@ -240,7 +284,6 @@ $font-inter: "Inter", sans-serif;
     }
   }
 
-  // Education subsection
   .education-container {
     width: 798px;
     height: 251px;
@@ -441,20 +484,23 @@ $font-inter: "Inter", sans-serif;
     }
   }
 
-  .skills-education-section {
-    gap: 120px;
+  .profile-section {
+    gap: 56px;
 
-    .skills-container {
-      gap: 80px;
+    .intro-text {
+      font-size: 52px;
     }
 
-    .education-container {
-      width: auto;
-      max-width: 600px;
+    .profile-intro {
+      width: min(100%, 440px);
+    }
 
-      .education-item {
-        width: 100%;
-      }
+    .profile-skills-title {
+      font-size: 34px;
+    }
+
+    .profile-skill-item {
+      font-size: 18px;
     }
   }
 
@@ -501,52 +547,47 @@ $font-inter: "Inter", sans-serif;
     }
   }
 
-  .introduction-section {
+  .profile-section {
     margin-top: 200px;
+    margin-left: 0;
+    flex-direction: column;
+    gap: 40px;
+
+    .profile-intro {
+      width: 100%;
+    }
 
     .intro-text {
       font-size: 48px;
     }
-  }
 
-  .skills-education-section {
-    flex-direction: column;
-    gap: 60px;
+    .social-section {
+      margin-left: 0;
+      gap: 10px;
 
-    .skills-container {
-      flex-direction: column;
-      gap: 40px;
-
-      .skill-category {
-        .skill-title {
-          font-size: 32px;
-        }
-
-        .skill-list {
-          font-size: 24px;
-        }
+      .social-link {
+        font-size: 20px;
+        line-height: 1.5;
       }
     }
 
-    .education-container {
-      width: auto;
-      height: auto;
+    .profile-skills {
+      width: 100%;
+      padding-top: 0;
+    }
 
-      .education-list {
-        gap: 40px;
-      }
+    .profile-skills-title {
+      font-size: 32px;
+      margin-bottom: 18px;
+    }
 
-      .education-item {
-        width: 100%;
+    .profile-skills-list {
+      gap: 14px;
+    }
 
-        .degree-title {
-          font-size: 28px;
-        }
-
-        .university-name {
-          font-size: 18px;
-        }
-      }
+    .profile-skill-item {
+      font-size: 17px;
+      line-height: 1.55;
     }
   }
 

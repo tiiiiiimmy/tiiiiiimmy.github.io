@@ -1,6 +1,42 @@
 import React from "react";
 import ProjectCarousel from "../components/ProjectCarousel";
 
+const techStacks = [
+  {
+    label: "Languages",
+    content: "Java, JavaScript, TypeScript, Python, C#, SQL, Bash",
+  },
+  {
+    label: "Backend & APIs",
+    content:
+      "RESTful APIs, Node.js, Express, FastAPI, .NET Core, Entity Framework",
+  },
+  {
+    label: "Databases",
+    content:
+      "PostgreSQL, MySQL, SQLite, SQL schema design, data migration, AWS RDS",
+  },
+  {
+    label: "Testing & QA",
+    content:
+      "Playwright, Vitest, Jest, Postman, Cucumber, Unit / Integration / E2E, Bug triage (Jira)",
+  },
+  {
+    label: "DevOps & CI/CD",
+    content:
+      "GitHub Actions, Jenkins, Azure DevOps, Docker, Kubernetes, AWS (EC2, ECS, RDS, S3)",
+  },
+  {
+    label: "Frontend",
+    content:
+      "React, TypeScript, Next.js, Tailwind CSS, HTML/CSS, Ant Design",
+  },
+  {
+    label: "Tooling & Agile",
+    content: "Git, Jira, Figma, Agile / Scrum, Linux/Unix",
+  },
+];
+
 function Home() {
   return (
     <div className="app">
@@ -45,70 +81,51 @@ function Home() {
           <div className="horizontal-line" />
         </div>
 
-        {/* Introduction Section - Lower Position */}
-        <section className="introduction-section">
-          <div className="intro-text">
-            Hi, Timmy here!
-            <br />A developer 
+        <section className="profile-section">
+          <div className="profile-intro">
+            <div className="intro-text">
+              Hi, Timmy here!
+              <br />A developer
+            </div>
+
+            <div className="social-section">
+              <a
+                href="https://github.com/tiiiiiimmy"
+                target="https://github.com/tiiiiiimmy"
+                rel="noopener noreferrer"
+                className="social-link github"
+              >
+                Github
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/timmy-huang-b4877728a/"
+                target="https://www.linkedin.com/in/timmy-huang-b4877728a/"
+                rel="noopener noreferrer"
+                className="social-link linkedin"
+              >
+                Linkedin
+              </a>
+
+              <a className="social-link mail">thua695@aucklanduni.ac.nz</a>
+            </div>
           </div>
-        </section>
 
-        {/* Social Links */}
-        <section className="social-section">
-          <a
-            href="https://github.com/tiiiiiimmy"
-            target="https://github.com/tiiiiiimmy"
-            rel="noopener noreferrer"
-            className="social-link github"
-          >
-            Github
-          </a>
-
-          <a
-            href="https://www.linkedin.com/in/timmy-huang-b4877728a/"
-            target="https://www.linkedin.com/in/timmy-huang-b4877728a/"
-            rel="noopener noreferrer"
-            className="social-link linkedin"
-          >
-            Linkedin
-          </a>
-
-          <a className="social-link mail">thua695@aucklanduni.ac.nz</a>
+          <div className="profile-skills">
+            <h2 className="profile-skills-title">Tech Stack</h2>
+            <div className="profile-skills-list">
+              {techStacks.map((item) => (
+                <p className="profile-skill-item" key={item.label}>
+                  <span className="profile-skill-label">{item.label}:</span>{" "}
+                  <span className="profile-skill-content">{item.content}</span>
+                </p>
+              ))}
+            </div>
+          </div>
         </section>
 
         {/* My Projects Section */}
         <ProjectCarousel />
-
-        {/* Skills and Education Combined Section */}
-        <section className="skills-education-section">
-          {/* Skills Container */}
-          <div className="skills-container">
-            {/* Dev Skills */}
-            <div className="skill-category">
-              <div className="skill-title">Dev</div>
-              <div className="skill-list">
-                Java, C#, JS
-                <br />
-                HTML, CSS
-                <br />
-                <br />
-                React, Svelte
-                <br />
-                Node.JS, ASP.NET
-                <br />
-                SQLite, MongoDB
-                <br />
-                <br />
-                AWS, Azure cloud
-                <br />
-                Agile (Sprint, Scrum)
-              </div>
-            </div>
-
-          </div>
-
-                 
-        </section>
 
         {/* Main Slogan at Bottom */}
         <section className="bottom-slogan-section">
