@@ -85,50 +85,62 @@ const projects = [
 ];
 
 function ProjectCard({ project }) {
-  const card = (
+  const renderLink = (className, children, ariaLabel) => {
+    if (!project.href) {
+      return <div className={className}>{children}</div>;
+    }
+
+    return project.external ? (
+      <a
+        href={project.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={className}
+        aria-label={ariaLabel}
+      >
+        {children}
+      </a>
+    ) : (
+      <Link to={project.href} className={className} aria-label={ariaLabel}>
+        {children}
+      </Link>
+    );
+  };
+
+  return (
     <article className="project-card">
-      <div className="project-card-image-wrap">
+      {renderLink(
+        'project-card-image-wrap',
         <img
           src={project.image}
           alt={`${project.title} project preview`}
           className="project-card-image"
-        />
-      </div>
+        />,
+        `View ${project.title} project image`
+      )}
 
       <div className="project-card-content">
-        <div className="project-card-meta">
-          <span>{project.number}</span>
-    
-        </div>
-        <span>{project.date}</span>
-        <h3 className="project-card-title">{project.title}</h3>
-        <p className="project-card-description">{project.description}</p>
+        {renderLink(
+          'project-card-text-link',
+          <>
+            <div className="project-card-meta">
+              <span>{project.number}</span>
+            </div>
+            <span className="project-card-date">{project.date}</span>
+            <h3 className="project-card-title">{project.title}</h3>
+            <p className="project-card-description">{project.description}</p>
 
-        {project.href && (
-          <span className="project-card-link">
-            {project.external ? 'View Project' : 'View Case Study'}
-            <span aria-hidden="true">→</span>
-          </span>
+            {project.href && (
+              <span className="project-card-link">
+                {project.external ? 'View Project' : 'View Case Study'}
+                <span aria-hidden="true">→</span>
+              </span>
+            )}
+          </>,
+          `View ${project.title} project details`
         )}
       </div>
     </article>
-  );
-
-  if (!project.href) return card;
-
-  return project.external ? (
-    <a
-      href={project.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="project-card-anchor"
-    >
-      {card}
-    </a>
-  ) : (
-    <Link to={project.href} className="project-card-anchor">
-      {card}
-    </Link>
   );
 }
 
