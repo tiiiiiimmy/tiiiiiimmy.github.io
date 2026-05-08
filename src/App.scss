@@ -7,7 +7,7 @@ $text-gray: #ffffff;
 $text-light: rgba(255, 255, 255, 0.78);
 $accent-green: #c8ff32;
 $education-green: #79a402;
-$placeholder-gray: #c4c4c4;
+$placeholder-gray: #4f4f4f6e;
 $transparent-white: rgba(255, 255, 255, 0.3);
 $white: rgba(255, 255, 255,1);
 
@@ -368,116 +368,6 @@ $font-inter: "Inter", sans-serif;
   }
 }
 
-// Projects section
-.projects-section {
-  margin-top: 300px;
-
-  .projects-title {
-    font-family: $font-anek;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 1.11;
-    color: $text-gray;
-    margin-bottom: 51px;
-    margin-left: 15px;
-    width: 207px;
-    height: 44px;
-  }
-
-  .projects-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 101px;
-    margin-left: 11px;
-    width: 1717px;
-  }
-
-  .project-card {
-    @include flex-column;
-    gap: 17px;
-    max-width: 808px;
-    width: 808px;
-
-    .project-image {
-      width: 100%;
-      height: 534px;
-      border-radius: 8px;
-      // background: $placeholder-gray;
-
-      &.project-1 {
-        background-image: url("/images/project1.png");
-        background-size: cover;
-        background-position: center;
-      }
-      &.project-2 {
-        background-image: url("/images/project2.jpg");
-        background-size: cover;
-        background-position: center;
-      }
-      &.project-3 {
-        background-image: url("/images/project3.png");
-        background-size: cover;
-        background-position: center;
-      }
-      &.project-4 {
-        background-image: url("/images/project4.png");
-        background-size: cover;
-        background-position: center;
-      }
-      &:hover {
-        transform: scale(1.005);
-        transition: transform 0.5s ease;
-        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-      }
-    }
-
-    .project-content {
-      @include flex-column;
-      gap: 7px;
-      align-self: stretch;
-
-      .project-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-       
-        align-self: stretch;
-
-        .project-title {
-          font-family: $font-inter;
-          font-weight: 800;
-          font-size: 36px;
-          line-height: 1.21;
-          color: $text-gray;
-          margin: 0;
-          flex-shrink: 0;
-        }
-
-        .project-date {
-          font-family: $font-inter;
-          font-weight: 600;
-          font-size: 32px;
-          line-height: 1.21;
-          color: #2b2b2b;
-          text-align: right;
-          margin: 0;
-          flex-shrink: 0;
-        }
-      }
-
-      .project-description {
-        margin: 0;
-        font-family: $font-anek;
-        font-weight: 400;
-        font-size: 24px;
-        line-height: 1.52;
-        color: $text-gray;
-        align-self: stretch;
-      }
-    }
-  }
-}
-
 // Bottom slogan section
 .bottom-slogan-section {
   display: flex;
@@ -542,18 +432,6 @@ $font-inter: "Inter", sans-serif;
     .tech-stack-icon {
       width: 68px;
       height: 68px;
-    }
-  }
-
-  .projects-section {
-    .projects-grid {
-      width: auto;
-      gap: 60px;
-    }
-
-    .project-card {
-      width: 100%;
-      max-width: 600px;
     }
   }
 
@@ -649,33 +527,6 @@ $font-inter: "Inter", sans-serif;
       &::before {
         left: -92px;
         font-size: 18px;
-      }
-    }
-  }
-
-  .projects-section {
-    .projects-grid {
-      flex-direction: column;
-      width: auto;
-      gap: 50px;
-    }
-
-    .project-card {
-      width: 100%;
-      max-width: 100%;
-
-      .project-content {
-        .project-header {
-          gap: 20px;
-
-          .project-title {
-            font-size: 28px;
-          }
-
-          .project-date {
-            font-size: 24px;
-          }
-        }
       }
     }
   }
