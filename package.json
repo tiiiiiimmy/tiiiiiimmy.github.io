@@ -10,11 +10,17 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@react-three/drei": "^9.122.0",
+    "@react-three/fiber": "^8.18.0",
+    "@shadergradient/react": "^2.4.20",
+    "camera-controls": "^3.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^7.9.5"
+    "react-router-dom": "^7.9.5",
+    "three": "^0.184.0"
   },
   "devDependencies": {
+    "@types/three": "^0.184.1",
     "@vitejs/plugin-react": "^4.0.0",
     "gh-pages": "^6.3.0",
     "sass": "^1.89.0",
